@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0B0B0B;
+  --color-emerald-accent: #10B981;
+  --color-cyan-accent: #06B6D4;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px var(--color-emerald-accent)); }
+    50% { opacity: 0.7; filter: drop-shadow(0 0 20px var(--color-cyan-accent)); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#050505] text-gray-200 font-sans selection:bg-emerald-500/30 selection:text-white;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-3xl transition-all duration-500;
+  }
+  
+  .glass-navbar {
+    @apply bg-[#050505]/40 backdrop-blur-xl border-b border-white/[0.03];
+  }
+}
+
+/* Modern 3D Mesh Grid Background */
+.modern-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #0c0c0c 0%, #050505 100%);
+  overflow: hidden;
+}
+
+.modern-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 80%);
+  transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+  opacity: 0.5;
+}
+
+.aurora-blur {
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-emerald-accent/20 rounded-full hover:bg-emerald-accent/40 transition-colors;
+}
+
+/* Aurora Background */
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-emerald-accent) 0%, transparent 70%);
+  filter: blur(120px);
+  opacity: 0.15;
+  animation: float 20s ease-in-out infinite alternate;
+}
+
+.aurora-blob-2 {
+  position: absolute;
+  right: -100px;
+  bottom: -100px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--color-cyan-accent) 0%, transparent 70%);
+  filter: blur(150px);
+  opacity: 0.1;
+  animation: float 15s ease-in-out infinite alternate-reverse;
+}
