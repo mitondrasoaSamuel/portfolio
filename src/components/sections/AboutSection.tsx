@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { FolderKanban, Clock, Building2 } from "lucide-react";
 import TiltCard from "../ui/TiltCard";
@@ -16,7 +15,6 @@ export default function AboutSection() {
     <section id="about" className="py-32 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
-          {/* Text content */}
           <div className="max-w-xl">
             <div className="text-emerald-500 font-mono text-[10px] uppercase tracking-[0.3em] mb-6">
               {t("about.kicker")}
@@ -36,25 +34,22 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Stats Cards */}
           <div className="grid gap-6">
             {stats.map((stat) => (
-              <Fragment key={stat.id}>
-                <TiltCard>
-                  <div className="glass-card p-8 flex items-center justify-between border-white/[0.03] hover:border-emerald-500/20 group">
-                    <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
-                        <stat.icon size={20} />
-                      </div>
-                      <div>
-                        <div className="text-xl md:text-2xl font-display font-bold text-white leading-snug">
-                          {t(stat.label)}
-                        </div>
+              <TiltCard key={stat.id}>
+                <div className="glass-card p-8 flex items-center justify-between border-white/[0.03] hover:border-emerald-500/20 group">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                      <stat.icon size={20} />
+                    </div>
+                    <div>
+                      <div className="text-xl md:text-2xl font-display font-bold text-white leading-snug">
+                        {t(stat.label)}
                       </div>
                     </div>
                   </div>
-                </TiltCard>
-              </Fragment>
+                </div>
+              </TiltCard>
             ))}
           </div>
         </div>

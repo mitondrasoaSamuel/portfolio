@@ -27,7 +27,7 @@ export default function Navbar() {
   const scrollToSection = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
-    if (!element) return;
+    if (!(element instanceof HTMLElement)) return;
 
     const lenis = lenisRef.current;
     if (lenis) {

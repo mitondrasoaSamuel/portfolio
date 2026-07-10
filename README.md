@@ -1,20 +1,82 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Portfolio — Samuel Frédéric
 
-# Run and deploy your AI Studio app
+Portfolio personnel full-stack : présentation, projets, parcours et formulaire de contact.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/97158562-4bef-4dcd-a25b-bc19328d9bd6
+- React 19 + TypeScript + Vite
+- Tailwind CSS v4
+- Motion (Framer Motion) + Lenis
+- i18next (FR / EN / ES)
+- EmailJS (formulaire de contact)
 
-## Run Locally
+## Prérequis
 
-**Prerequisites:**  Node.js
+- Node.js 20+ (recommandé)
+- Compte [EmailJS](https://www.emailjs.com/) pour le formulaire de contact
 
+## Installation
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+```
+
+## Configuration
+
+1. Copiez le fichier d’exemple :
+
+```bash
+cp .env.example .env
+```
+
+2. Renseignez les variables dans `.env` (valeurs depuis le dashboard EmailJS) :
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_EMAILJS_SERVICE_ID` | ID du service EmailJS |
+| `VITE_EMAILJS_TEMPLATE_ID` | ID du template |
+| `VITE_EMAILJS_PUBLIC_KEY` | Clé publique (Account → API Keys) |
+
+> Ne committez jamais le fichier `.env`. Seul `.env.example` (sans secrets) est versionné.
+
+## Lancer en local
+
+```bash
+npm run dev
+```
+
+Ouvrez [http://localhost:3000](http://localhost:3000).
+
+## Scripts utiles
+
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Serveur de développement (port 3000) |
+| `npm run build` | Build de production (`dist/`) |
+| `npm run preview` | Prévisualiser le build localement |
+| `npm run lint` | Vérification TypeScript |
+
+## Déploiement (Vercel)
+
+1. Connectez le dépôt à Vercel.
+2. Ajoutez les mêmes variables `VITE_EMAILJS_*` dans **Settings → Environment Variables**.
+3. Redéployez après toute modification des variables (elles sont injectées au build).
+4. Dans EmailJS → **Account → Security → Allowed Origins**, ajoutez l’URL du site (ex. `https://votre-projet.vercel.app`).
+
+Build : `npm run build` · Output : `dist`
+
+## Structure (aperçu)
+
+```txt
+src/
+├── components/   # layout, sections, ui
+├── data/         # profile, projects, experiences
+├── hooks/        # useTypewriter, etc.
+└── i18n/         # traductions projets / expérience
+```
+
+Plus de détails : voir `ARCHITECTURE.md`.
+
+## Licence
+
+Projet personnel — tous droits réservés.

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -52,29 +51,27 @@ export default function TechStack() {
             }) as TechGroupI18n;
             const Icon = TECH_GROUP_ICONS[id];
             return (
-              <Fragment key={id}>
-                <TiltCard className="h-full">
-                  <div className="glass-card p-8 h-full border-white/5 hover:border-emerald-500/20 group">
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-500 mb-8 group-hover:scale-110 transition-transform duration-500">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="font-display font-bold text-xl mb-6 text-white group-hover:text-emerald-500 transition-colors">
-                      {group.title}
-                    </h3>
-                    <div className="flex flex-col gap-3">
-                      {group.skills.map((skill) => (
-                        <div
-                          key={skill}
-                          className="flex items-center gap-3 text-sm text-gray-500 font-light"
-                        >
-                          <div className="w-1 h-1 rounded-full bg-emerald-500/30" />
-                          {skill}
-                        </div>
-                      ))}
-                    </div>
+              <TiltCard key={id} className="h-full">
+                <div className="glass-card p-8 h-full border-white/5 hover:border-emerald-500/20 group">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-emerald-500 mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <Icon size={24} />
                   </div>
-                </TiltCard>
-              </Fragment>
+                  <h3 className="font-display font-bold text-xl mb-6 text-white group-hover:text-emerald-500 transition-colors">
+                    {group.title}
+                  </h3>
+                  <div className="flex flex-col gap-3">
+                    {group.skills.map((skill) => (
+                      <div
+                        key={skill}
+                        className="flex items-center gap-3 text-sm text-gray-500 font-light"
+                      >
+                        <div className="w-1 h-1 rounded-full bg-emerald-500/30" />
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
             );
           })}
         </div>
